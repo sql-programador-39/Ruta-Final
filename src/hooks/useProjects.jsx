@@ -1,8 +1,8 @@
+import ProjectsContext from "../context/ProjectsProvider"
 import { useContext } from "react"
-import { ProjectsContext } from "../context/ProjectsProvider"
 
 const useProjects = () => {
-  return useContext(ProjectsContext)
+  return useContext(ProjectsContext)  
 }
 
 export default useProjects

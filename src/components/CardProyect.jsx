@@ -1,12 +1,7 @@
 import { Link } from "react-router-dom"
 import LogoReact from "../assets/logo-react.jpg"
 
-import useProjects from "../hooks/useProjects"
-
 const CardProyect = () => {
-
-  const { projects } = useProjects()
-
   return (
     <>
       <Link to="/projects/1">
