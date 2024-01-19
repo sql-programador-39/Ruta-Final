@@ -5,19 +5,23 @@ import Home from "./pages/Home"
 import Projects from "./pages/Projects"
 import Project from "./pages/Project"
 
+import { ProjectsProvider } from "./context/ProjectsProvider"
+
 function App() {
 
   return (
     <>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<MainLayout />}>
-            <Route index element={<Home />} />
-            <Route path="/projects" element={<Projects />} />
-            <Route path="/projects/:id" element={<Project />} />
-          </Route>
-        </Routes>
-      </BrowserRouter>
+      <ProjectsProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<MainLayout />}>
+              <Route index element={<Home />} />
+              <Route path="/projects" element={<Projects />} />
+              <Route path="/projects/:id" element={<Project />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </ProjectsProvider>
     </>  
   )
 }

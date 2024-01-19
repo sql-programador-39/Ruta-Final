@@ -1,8 +1,17 @@
+import CardProyect from "../components/CardProyect"
+
 const Projects = () => {
   return (
-    <div>
-      <h1>Projects</h1>
-    </div>
+    <>
+      <section className="w-3/4 grid grid-cols-3 mx-auto">
+        <CardProyect />
+        <CardProyect />
+        <CardProyect />
+        <CardProyect />
+        <CardProyect />
+        <CardProyect />
+      </section> 
+    </>
   )
 }
 
