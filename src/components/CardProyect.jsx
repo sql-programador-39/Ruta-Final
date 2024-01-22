@@ -1,33 +1,62 @@
 import { Link } from "react-router-dom"
-import LogoReact from "../assets/logo-react.jpg"
+import NoImage from "./NoImage"
 
-const CardProyect = () => {
+const CardProyect = ({project}) => {
+  
+  const { id, name, description, client, leader, phone, image } = project
+  
   return (
     <>
-      <Link to="/projects/1">
-        <article className="max-w-sm rounded overflow-hidden shadow-lg mt-10">
+      <article className="max-w-sm rounded overflow-hidden shadow-xl mt-10">
+        <Link to={`/projects/${id}`}>
           <header>
-            <img className="w-full" src={LogoReact} alt="Sunset in the mountains" />
+            {
+              image ? (
+                <img 
+                  className="w-full" 
+                  src={ image } 
+                  alt="Sunset in the mountains" 
+                />
+              ) : (
+                <NoImage />
+              )
+            }
           </header>
 
           <main>
-            <div className="px-6 py-4">
-              <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
-              <p className="text-gray-700 text-base">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+            <div className="text-gray-700 text-base px-6 py-4">
+              <div className="font-bold text-xl mb-2">{name}</div>
+              <p className=" mb-2">
+                <span className="font-bold">Descripción: </span>
+                {description}
+              </p>
+
+              <p className="border-t-2 pt-2">
+                <span className="font-bold">Cliente: </span>
+                {client}
+              </p>
+
+              <p>
+                <span className="font-bold">Teléfono: </span>
+                {phone}
+              </p>
+
+              <p>
+                <span className="font-bold">Encargado: </span>
+                {leader}
               </p>
             </div>
           </main>
 
-          <footer>
+          {/* <footer>
             <div className="px-6 pt-4 pb-2">
               <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
               <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
               <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
             </div>
-          </footer>
-        </article>
-      </Link>
+          </footer> */}
+        </Link>
+      </article>
     </>
   )
 }
