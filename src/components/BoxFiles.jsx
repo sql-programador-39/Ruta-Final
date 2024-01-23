@@ -56,8 +56,8 @@ const BoxFiles = () => {
   
   const files = acceptedFiles.map(file => (
     <li key={file.path}>
-      <div className='flex bg-blue-400 px-2 py-1 rounded-md text-white'>
-        <img src={File} alt="File" className='me-2'/>
+      <div className='flex bg-orange-500 px-2 py-1 rounded-md text-white h-16 items-center'>
+        <img src={File} alt="File" className='me-2 w-7 h-7'/>
         <p>
           {file.path} - {file.size} bytes
         </p>

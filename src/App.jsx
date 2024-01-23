@@ -7,6 +7,7 @@ import Project from "./pages/Project"
 
 import { ProjectsProvider } from "./context/ProjectsProvider"
 
+
 function App() {
 
   return (

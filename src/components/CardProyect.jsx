@@ -3,7 +3,7 @@ import NoImage from "./NoImage"
 
 const CardProyect = ({project}) => {
   
-  const { id, name, description, client, leader, phone, image } = project
+  const { id, name, description, client, leader, phone, image, tags } = project
   
   return (
     <>
@@ -48,13 +48,17 @@ const CardProyect = ({project}) => {
             </div>
           </main>
 
-          {/* <footer>
-            <div className="px-6 pt-4 pb-2">
-              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#photography</span>
-              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#travel</span>
-              <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#winter</span>
+          <footer>
+            <div className="px-6 pt-4 pb-5 grid grid-cols-2">
+              {tags.map((tag, index) => (
+                <div key={index} className="my-1">
+                  <span className="bg-orange-500 text-white text-sm font-medium me-2 px-2.5 py-0.5 rounded">
+                    {tag.name}
+                  </span>
+                </div>
+              ))}
             </div>
-          </footer> */}
+          </footer>
         </Link>
       </article>
     </>

@@ -1,24 +1,21 @@
 import { useState } from 'react'
 import useProjects from '../hooks/useProjects'
+import TagForm from './TagForm'
 
 const Modal = () => {
 
-  const [showModal, setShowModal] = useState(false)
-  const [name, setName] = useState("")
-  const [description, setDescription] = useState("")
-  const [client, setClient] = useState("")
-  const [phone, setPhone] = useState("")
-  const [leader, setLeader] = useState("")
-  /*const [tags, setTags] = useState([])
-  const [tasks, setTasks] = useState([])
-  const [actions, setActions] = useState([])
-  const [files, setFiles] = useState([])
-  const [completedTasks, setCompletedTasks] = useState([])
-  const [inProgressTasks, setInProgressTasks] = useState([])
-  const [overdueTasks, setOverdueTasks] = useState([]) */
-
-  const { setProject } = useProjects()
+  const { setProject, name,
+    setName,
+    description,
+    setDescription,
+    client,
+    setClient,
+    phone,
+    setPhone,
+    leader,
+    setLeader, } = useProjects()
   
+  const [showModal, setShowModal] = useState(false)
 
   const handleChange = (e) => {
     const {name, value} = e.target
@@ -41,7 +38,6 @@ const Modal = () => {
         break;
       default:
         break;
-
     }
 
   }
@@ -57,7 +53,7 @@ const Modal = () => {
       image: "https://picsum.photos/200/200",
       client,
       phone,
-      leader
+      leader,
     }
 
     setProject(newProject)
@@ -68,28 +64,28 @@ const Modal = () => {
       <button 
         onClick={() => setShowModal(true)}
         type='button'
-        className="bg-orange-200 ms-5 py-3 px-1 rounded"
+        className="bg-orange-500 text-white ms-5 py-1 px-3 rounded font-bold shadow-lg hover:bg-orange-600"
       >
-        + Agregar Proyecto
+        Nuevo Proyecto
       </button>
       {showModal ? (
         <>
           <div
             className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
           >
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
+            <div className="relative w-2/4 my-6 mx-auto max-w-3xl">
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
-                <div className="flex items-start justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
+                <div className="flex items-center justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                   <h3 className="text-3xl font-semibold">
                     Agregar Nuevo Proyecto
                   </h3>
                   <button
-                    className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
+                    className="p-1 ml-auto bg-transparent border-0 text-black float-right text-5xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => setShowModal(false)}
                   >
-                    <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
+                    <span className="bg-transparent text-black text-3xl block outline-none focus:outline-none">
                       ×
                     </span>
                   </button>
@@ -97,78 +93,86 @@ const Modal = () => {
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
                   <form action="" onSubmit={handleSubmit}>
-                    <div className="mb-4">
-                      <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
-                        Nombre:
-                      </label>
-                      <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="name"
-                        name="name"
-                        type="text"
-                        placeholder="Nombre del proyecto"
-                        onChange={handleChange}
-                      />
-                    </div>
-                    <div className="mb-4">
-                      <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
-                        Descripción:
-                      </label>
-                      <textarea
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-20"
-                        id="description"
-                        type="text"
-                        name="description"
-                        placeholder="Descripción del proyecto"
-                        onChange={handleChange}
-                      />
-                    </div>
+                      <div className="mb-4">
+                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
+                          Nombre:
+                        </label>
+                        <input
+                          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                          id="name"
+                          name="name"
+                          type="text"
+                          placeholder="Nombre del proyecto"
+                          onChange={handleChange}
+                          value={name}
+                        />
+                      </div>
+                      <div className="mb-4">
+                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
+                          Descripción:
+                        </label>
+                        <textarea
+                          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-20"
+                          id="description"
+                          type="text"
+                          name="description"
+                          placeholder="Descripción del proyecto"
+                          onChange={handleChange}
+                          value={description}
+                        />
+                      </div>
 
                     
-                    <div className="mb-4">
-                      <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="client">
-                        Cliente:
-                      </label>
-                      <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="client"
-                        type="text"
-                        name="client"
-                        placeholder="Cliente"
-                        onChange={handleChange}
-                      />
-                    </div>
+                      <div className="mb-4">
+                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="client">
+                          Cliente:
+                        </label>
+                        <input
+                          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                          id="client"
+                          type="text"
+                          name="client"
+                          placeholder="Cliente"
+                          onChange={handleChange}
+                          value={client}
+                        />
+                      </div>
                     
-                    <div className="mb-4">
-                      <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phone">
-                        Telefono:
-                      </label>
-                      <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="phone"
-                        type="text"
-                        name="phone"
-                        placeholder="Telefono del Cliente"
-                        onChange={handleChange}
-                      />
-                    </div>
+                      <div className="mb-4">
+                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phone">
+                          Telefono:
+                        </label>
+                        <input
+                          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                          id="phone"
+                          type="text"
+                          name="phone"
+                          placeholder="Telefono del Cliente"
+                          onChange={handleChange}
+                          value={phone}
+                        />
+                      </div>
 
-                    <div className="mb-4">
-                      <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="leader">
-                        Encargado del Proyecto:
-                      </label>
-                      <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="leader"
-                        type="text"
-                        name="leader"
-                        placeholder="Encargado del Proyecto"
-                        onChange={handleChange}
-                      />
-                    </div>
-                    <div>
-
-                    </div>
+                      <div className="mb-4">
+                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="leader">
+                          Encargado del Proyecto:
+                        </label>
+                        <input
+                          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                          id="leader"
+                          type="text"
+                          name="leader"
+                          placeholder="Encargado del Proyecto"
+                          onChange={handleChange}
+                          value={leader}
+                        />
+                      </div>
+                      <div className="mb-4">
+                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="tags">
+                          Tags:
+                        </label>
+                        <TagForm />
+                      </div>
                   </form>
                 </div>
                 {/*footer*/}

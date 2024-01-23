@@ -1,18 +1,58 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import RichText from './RichText'
 
-const ActionsModal = () => {
+const ActionsModal = ({dataProject, setDataProject}) => {
 
   const [showModal, setShowModal] = useState(false)
+
+  const [action, setAction] = useState("")
+  const [date, setDate] = useState("")
+  
+
+  const handleChange = (e) => {
+    const {name, value} = e.target
+
+    switch (name) {
+      case 'action':
+        setAction(value)
+        break;
+      case 'date':
+        setDate(value)
+        break;
+      default:
+        break;
+    }
+  }
+  
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setShowModal(false)
+
+    const newAction = {
+      id: (Date.now()).toString(),
+      action,
+      date
+    }
+
+    setDataProject((prevProject) => ({
+      ...prevProject,
+      actions: [...(prevProject.actions || []), newAction],
+    }))
+
+    console.log(dataProject);
+
+    setAction('')
+    setDate('')
+  }
 
   return (
     <>
       <button 
         onClick={() => setShowModal(true)}
         type='button'
-        className="bg-orange-200 ms-5 py-3 px-1 rounded font-bold"
+        className="bg-orange-500 text-white ms-5 py-1 px-3 rounded font-bold shadow-lg hover:bg-orange-600"
       >
-        + Agregar Acción
+        Nueva Acción
       </button>
       {showModal ? (
         <>
@@ -36,7 +76,26 @@ const ActionsModal = () => {
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
-                  <RichText />
+                  <form action="" onSubmit={handleSubmit}>
+                    <label htmlFor="" className='font-bold'>Acción:</label>
+
+                    <div className='my-1'>
+                      <RichText 
+                        action={action}
+                        setAction={setAction}
+                      />
+                    </div>
+
+                    <label htmlFor="date" className='font-bold'>Fecha de realización:</label>
+                    <input 
+                      type="datetime-local"
+                      className="w-full border-2 border-gray-300 p-2 rounded my-1"
+                      id='date'
+                      name='date'
+                      value={date}
+                      onChange={handleChange}
+                    />
+                  </form>
                 </div>
                 {/*footer*/}
                 <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
@@ -50,6 +109,7 @@ const ActionsModal = () => {
                   <button
                     className="bg-emerald-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
                     type="submit"
+                    onClick={handleSubmit}
                   >
                     Agregar Acción
                   </button>
