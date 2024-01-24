@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-const TagForm = () => {
-  const [tags, setTags] = useState([]);
+const TagForm = ({setTags, tags}) => {
+  
   const [tagInput, setTagInput] = useState('');
 
   const handleKeyDown = (e) => {

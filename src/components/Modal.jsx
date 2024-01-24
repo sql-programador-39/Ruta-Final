@@ -1,19 +1,32 @@
 import { useState } from 'react'
 import useProjects from '../hooks/useProjects'
 import TagForm from './TagForm'
+import FinalDate from "../helpers/fechaFin"
 
 const Modal = () => {
 
-  const { setProject, name,
+  const { setProject,
+    name,
     setName,
     description,
     setDescription,
-    client,
-    setClient,
-    phone,
-    setPhone,
-    leader,
-    setLeader, } = useProjects()
+    alias,
+    setAlias,
+    tags,
+    setTags,
+    propietario,
+    setPropietario,
+    date,
+    setDate,
+    duration,
+    setDuration,
+    tasks,
+    setTasks,
+    actions,
+    setActions,
+    files,
+    setFiles,
+  } = useProjects()
   
   const [showModal, setShowModal] = useState(false)
 
@@ -27,14 +40,20 @@ const Modal = () => {
       case 'description':
         setDescription(value)
         break;
-      case 'client':
-        setClient(value)
+      case 'alias':
+        setAlias(value)
+        break;    
+      case 'tags':
+        setTags(value)
+      break;
+      case 'propietario':
+        setPropietario(value)
         break;
-      case 'phone':
-        setPhone(value)
+      case 'date':
+        setDate(value)
         break;
-      case 'leader':
-        setLeader(value)
+      case 'duration':
+        setDuration(value)
         break;
       default:
         break;
@@ -46,17 +65,34 @@ const Modal = () => {
     e.preventDefault()
     setShowModal(false)
 
+    FinalDate(date, duration)
+
     const newProject = {
       id: (Date.now()).toString(),
       name,
       description,
       image: "https://picsum.photos/200/200",
-      client,
-      phone,
-      leader,
+      alias,
+      tags,
+      propietario,
+      date,
+      duration,
+      finalDate: FinalDate(date, duration),
+      tasks,
+      actions,
+      files,
     }
 
     setProject(newProject)
+
+    setName('')
+    setDescription('')
+    setAlias('')
+    setTags([])
+    setPropietario('')
+    setDate('')
+    setDuration('')
+
   }
 
   return (
@@ -95,7 +131,7 @@ const Modal = () => {
                   <form action="" onSubmit={handleSubmit}>
                       <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
-                          Nombre:
+                          Nombre Clave:
                         </label>
                         <input
                           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -107,6 +143,33 @@ const Modal = () => {
                           value={name}
                         />
                       </div>
+                        
+                      <div className="mb-4">
+                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="alias">
+                          Alias:
+                        </label>
+                        <input
+                          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                          id="alias"
+                          type="text"
+                          name="alias"
+                          placeholder="Alias"
+                          onChange={handleChange}
+                          value={alias}
+                        />
+                      </div>
+
+
+                      <div className="mb-4">
+                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="tags">
+                          Tags:
+                        </label>
+                        <TagForm 
+                          setTags={setTags}
+                          tags={tags}
+                        />
+                      </div>
+
                       <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
                           Descripción:
@@ -122,56 +185,52 @@ const Modal = () => {
                         />
                       </div>
 
-                    
                       <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="client">
-                          Cliente:
-                        </label>
-                        <input
-                          className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                          id="client"
-                          type="text"
-                          name="client"
-                          placeholder="Cliente"
-                          onChange={handleChange}
-                          value={client}
-                        />
+                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="propietario">
+                            Propietario:
+                          </label>
+                          <select 
+                            name="propietario" 
+                            id="propietario" 
+                            onChange={handleChange}
+                            value={propietario}
+                            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+                            >
+                            <option value="0">Seleccione un propietario</option>
+                            <option value="1">Propietario 1</option>
+                            <option value="2">Propietario 2</option>
+                            <option value="3">Propietario 3</option>
+                          </select>
                       </div>
-                    
+
                       <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="phone">
-                          Telefono:
+                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="date">
+                          Fecha de inicio:
                         </label>
                         <input
                           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                          id="phone"
-                          type="text"
-                          name="phone"
-                          placeholder="Telefono del Cliente"
+                          id="date"
+                          type="date"
+                          name="date"
+                          placeholder="Fecha de inicio"
                           onChange={handleChange}
-                          value={phone}
+                          value={date}
                         />
                       </div>
 
                       <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="leader">
-                          Encargado del Proyecto:
+                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="duration">
+                          Duración en semanas:
                         </label>
                         <input
                           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                          id="leader"
-                          type="text"
-                          name="leader"
-                          placeholder="Encargado del Proyecto"
+                          id="duration"
+                          type="number"
+                          name="duration"
+                          placeholder="Duración en semanas"
                           onChange={handleChange}
-                          value={leader}
+                          value={duration}
                         />
-                      </div>
-                      <div className="mb-4">
-                        <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="tags">
-                          Tags:
-                        </label>
-                        <TagForm />
                       </div>
                   </form>
                 </div>

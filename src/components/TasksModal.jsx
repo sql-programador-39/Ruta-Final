@@ -1,35 +1,20 @@
 import { useState } from 'react'
+import RichText from './RichText'
 
 const TasksModal = ({dataProject, setDataProject}) => {
 
   const [showModal, setShowModal] = useState(false)
 
   const [task, setTask] = useState("")
-  const [date, setDate] = useState("")
-
-  const handleChange = (e) => {
-    const {name, value} = e.target
-
-    switch (name) {
-      case 'task':
-        setTask(value)
-        break;
-      case 'date':
-        setDate(value)
-        break;
-      default:
-        break;
-    }
-  }
+  const [status, setStatus] = useState("1")
 
   const handleSubmit = (e) => {
     e.preventDefault()
     setShowModal(false)
 
     const newTask = {
-      id: (Date.now()).toString(),
       task,
-      date
+      status
     }
 
     setDataProject((prevProject) => ({
@@ -38,7 +23,6 @@ const TasksModal = ({dataProject, setDataProject}) => {
     }))
 
     setTask('')
-    setDate('')
   }
 
   return (
@@ -77,30 +61,13 @@ const TasksModal = ({dataProject, setDataProject}) => {
                       <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="task">
                         Tarea:
                       </label>
-                      <textarea
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                        id="task"
-                        name="task"
-                        placeholder="ej. Instalación programas"
-                        onChange={handleChange}
+                      <div className='my-1'>
+                      <RichText 
                         value={task}
-                      />
-                    </div> 
-
-                    <div className="mb-4">
-                      <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="date">
-                        Fecha de inicio:
-                      </label>
-                      <input
-                        className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-20"
-                        id="date"
-                        type="datetime-local"
-                        name="date"
-                        onChange={handleChange}
-                        value={date}
+                        set={setTask}
                       />
                     </div>
-
+                    </div> 
                   </form>
                 </div>
                 {/*footer*/}

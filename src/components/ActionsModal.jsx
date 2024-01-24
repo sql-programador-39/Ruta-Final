@@ -82,13 +82,13 @@ const ActionsModal = ({dataProject, setDataProject}) => {
                     <div className='my-1'>
                       <RichText 
                         action={action}
-                        setAction={setAction}
+                        set={setAction}
                       />
                     </div>
 
                     <label htmlFor="date" className='font-bold'>Fecha de realización:</label>
                     <input 
-                      type="datetime-local"
+                      type="date"
                       className="w-full border-2 border-gray-300 p-2 rounded my-1"
                       id='date'
                       name='date'

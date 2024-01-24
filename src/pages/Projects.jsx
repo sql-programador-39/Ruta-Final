@@ -4,6 +4,7 @@ import CardProyect from "../components/CardProyect"
 import Modal from "../components/Modal"
 import SearchBar from "../components/SearchBar"
 
+
 import useProjects from "../hooks/useProjects"
 
 
@@ -15,7 +16,7 @@ const Projects = () => {
 
   const filteredProjects = projects.filter((project) =>
     project.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    project.tags.some((tag) => tag.name.toLowerCase().includes(searchTerm.toLowerCase()))
+    project.tags.some((tag) => tag.toLowerCase().includes(searchTerm.toLowerCase()))
   );
 
   const handleSearch = (term) => {

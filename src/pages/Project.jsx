@@ -11,36 +11,38 @@ import Table from "../components/Table"
 import TasksModal from "../components/TasksModal"
 import ActionsModal from "../components/ActionsModal"
 import BoxFiles from "../components/BoxFiles"
+import TaskCard from "../components/TaskCard"
+
 
 
 
 
 const Project = () => {
 
-  const { projects, project, setProject } = useProjects()
+  const { setProjects, projects, project, setProject } = useProjects()
 
-  const [dataProject, setDataProject] = useState({})
+  const [dataProject, setDataProject] = useState({});
 
   const { id } = useParams()
 
 
   useEffect(() => {
-    projects.map(project => {
-      if (project.id === id) {
-        setDataProject(project)
-      }
-    })
+    const foundProject = projects.find((p) => p.id === id);
+    if (foundProject) {
+      setDataProject({ ...foundProject });
+    }
   }, [])
 
   useEffect(() => {
-    /* projects.map(project => { 
-      if (project.id === id) {
-        setProject(dataProject)
-      }
-    }) */
-    console.log(dataProject);
-    
-  }, [project])
+
+    if (Object.keys(dataProject).length === 0) return
+
+    const updatedProjects = projects.map((p) =>
+      p.id === id ? dataProject : p
+    );
+
+    setProjects(updatedProjects);
+  }, [dataProject]);
 
   return (
     <section >
@@ -60,12 +62,14 @@ const Project = () => {
         </div>
 
         <div className=" my-auto">
-          <h1 className="text-xl my-5"><span className="font-bold text-2xl">Nombre: </span> {dataProject.name}</h1>
+          <h1 className="text-xl my-5"><span className="font-bold text-2xl">Nombre Clave: </span> {dataProject.name}</h1>
           <p className="font-bold text-2xl">Descripción:</p>
-          <p className="text-xl">{project.description}</p>
-          <p className="text-xl"><span className="font-bold text-2xl">Cliente:</span> {dataProject.client}</p>
-          <p className="text-xl"><span className="font-bold text-2xl">Teléfono:</span> {dataProject.phone}</p>
-          <p className="text-xl"><span className="font-bold text-2xl">Encargado:</span> {dataProject.leader}</p>
+          <p className="text-xl">{dataProject.description}</p>
+          <p className="text-xl"><span className="font-bold text-2xl">Alias:</span> {dataProject.alias}</p>
+          <p className="text-xl"><span className="font-bold text-2xl">Propietario:</span> {dataProject.propietario}</p>
+          <p className="text-xl"><span className="font-bold text-2xl">Fecha de inicio:</span> {dataProject.date}</p>
+          <p className="text-xl"><span className="font-bold text-2xl">Fecha de finalización:</span> {dataProject.finalDate}</p>
+          <p className="text-xl"><span className="font-bold text-2xl">Duración:</span> {dataProject.duration} Semanas</p>
           <div>
             <p className="font-bold text-2xl">Tags:</p>
 
@@ -75,7 +79,7 @@ const Project = () => {
                   {(dataProject.tags).map((tag, index) => (
                     <div key={index} className='bg-orange-500 text-orange-200 text-sm font-medium px-2.5 py-0.5 rounded flex justify-between w-full'>
                       <div className="w-full text-center">
-                        {tag.name}
+                        {tag}
                       </div>
                     </div>
                   ))}
@@ -88,7 +92,7 @@ const Project = () => {
         </div>
       </div>
 
-      <div>
+      <div className="container mx-auto">
 
         <div className="flex justify-center items-center mb-5">
           <h2 className="text-2xl font-bold text-center">Tareas</h2>
@@ -99,9 +103,31 @@ const Project = () => {
             setDataProject={setDataProject}
           />
         </div>
-        <Table 
+
+        <div className={`bg-gray-100 w-3/4 flex justify-center items-center mx-auto my-5 py-5 ${dataProject.tasks ? '' : 'h-40'}`}>
+          {
+            dataProject.tasks ? (
+              <div className="grid grid-cols-5 gap-5 w-3/4">
+                {
+                  (dataProject.tasks).map((task, index) => (
+                    <div key={index}>
+                      <TaskCard 
+                        task={task.task}
+                        status={task.status}
+                      />
+                    </div>
+                  ))
+                }
+              </div>
+            ) : (
+              <p className="text-xl">No hay tareas</p>
+            )
+          }
+        </div>
+
+        {/* <Table 
           dataProject={dataProject}
-        />
+        /> */}
       </div>
 
       <div className="my-5">

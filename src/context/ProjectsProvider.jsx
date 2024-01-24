@@ -11,20 +11,18 @@ const ProjectsProvider = ({children}) => {
   
   const [name, setName] = useState("")
   const [description, setDescription] = useState("")
-  const [client, setClient] = useState("")
-  const [phone, setPhone] = useState("")
-  const [leader, setLeader] = useState("")
-  /* const [tags, setTags] = useState([])
-  const [tasks, setTasks] = useState([]) */
+  const [alias, setAlias] = useState("")
+  const [propietario, setPropietario] = useState("")
+  const [date, setDate] = useState("")
+  const [duration, setDuration] = useState("")
+  const [tags, setTags] = useState([])
   const [actions, setActions] = useState([])
-  /*const [files, setFiles] = useState([])
-  const [completedTasks, setCompletedTasks] = useState([])
-  const [inProgressTasks, setInProgressTasks] = useState([])
-  const [overdueTasks, setOverdueTasks] = useState([]) */
+  const [files, setFiles] = useState([])
+  const [tasks, setTasks] = useState([])
 
   
 
-  const getProjects = async () => {
+  /* const getProjects = async () => {
     try {
       setProjects(data);
     } catch (error) {
@@ -34,13 +32,13 @@ const ProjectsProvider = ({children}) => {
 
   useEffect(() => {
     getProjects()
-  }, [])
+  }, []) */
 
   useEffect(() => {
     if (Object.keys(project).length === 0) return
 
     setProjects([...projects, project])
-    setProject({})
+ 
   }, [project])
 
   return (
@@ -49,19 +47,27 @@ const ProjectsProvider = ({children}) => {
         projects,
         setProject,
         project,
+        setProjects,
         name,
         setName,
         description,
         setDescription,
-        client,
-        setClient,
-        phone,
-        setPhone,
-        leader,
-        setLeader,
+        alias,
+        setAlias,
+        propietario,
+        setPropietario,
+        date,
+        setDate,
+        duration,
+        setDuration,
+        tags,
+        setTags,
         actions,
         setActions,
-
+        files,
+        setFiles,
+        tasks,
+        setTasks,
       }}
     >
       {children}

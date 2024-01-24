@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom"
 import NoImage from "./NoImage"
 
+
 const CardProyect = ({project}) => {
   
-  const { id, name, description, client, leader, phone, image, tags } = project
+  const { id, name, description, image, tags, alias, propietario, date, duration, finalDate } = project
   
   return (
     <>
@@ -15,7 +16,7 @@ const CardProyect = ({project}) => {
                 <img 
                   className="w-full" 
                   src={ image } 
-                  alt="Sunset in the mountains" 
+                  alt="project image" 
                 />
               ) : (
                 <NoImage />
@@ -32,18 +33,28 @@ const CardProyect = ({project}) => {
               </p>
 
               <p className="border-t-2 pt-2">
-                <span className="font-bold">Cliente: </span>
-                {client}
+                <span className="font-bold">Alias: </span>
+                {alias}
               </p>
 
               <p>
-                <span className="font-bold">Teléfono: </span>
-                {phone}
+                <span className="font-bold">Propietario: </span>
+                {propietario}
               </p>
 
               <p>
-                <span className="font-bold">Encargado: </span>
-                {leader}
+                <span className="font-bold">Fecha de inicio: </span>
+                {date}
+              </p>
+
+              <p>
+                <span className="font-bold">Duración: </span>
+                {duration} Semanas
+              </p>
+
+              <p>
+                <span className="font-bold">Fecha de finalización: </span>
+                {finalDate}
               </p>
             </div>
           </main>
@@ -53,7 +64,7 @@ const CardProyect = ({project}) => {
               {tags.map((tag, index) => (
                 <div key={index} className="my-1">
                   <span className="bg-orange-500 text-white text-sm font-medium me-2 px-2.5 py-0.5 rounded">
-                    {tag.name}
+                    {tag}
                   </span>
                 </div>
               ))}
