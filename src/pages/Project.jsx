@@ -38,18 +38,19 @@ const Project = () => {
 
     if (Object.keys(dataProject).length === 0) return
 
-    /* const  newAction = {
+    const  newAction = {
       id: (Date.now()).toString(),
       action: "Se ha creado el proyecto",
       date: Date.now().toString()
-    }    */
+    }   
+    console.log(newAction);
     
     /* setDataProject((prevProject) => ({
       ...prevProject,
       actions: [...(prevProject.actions || []), newAction],
     })) */
 
-    let completedCount = 0;
+  let completedCount = 0;
   let pendingCount = 0;
   let delayedCount = 0;
 
@@ -150,11 +151,11 @@ const Project = () => {
 
         <div className={`bg-gray-100 w-3/4 flex justify-center items-center mx-auto my-5 py-5 ${dataProject.tasks ? '' : 'h-40'}`}>
           {
-            dataProject.tasks.length !== 0 ? (
+            dataProject.tasks?.length !== 0 ? (
               <div className="grid grid-cols-3 gap-5 w-3/4">
                 
                 {
-                  dataProject.tasks.map((task, index) => (
+                  dataProject.tasks?.map((task, index) => (
                     <div key={index}>
                       <TaskCard
                         task={task} 
