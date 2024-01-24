@@ -1,4 +1,5 @@
 import { useState } from 'react'
+
 import RichText from './RichText'
 
 const TasksModal = ({dataProject, setDataProject}) => {
@@ -6,15 +7,16 @@ const TasksModal = ({dataProject, setDataProject}) => {
   const [showModal, setShowModal] = useState(false)
 
   const [task, setTask] = useState("")
-  const [status, setStatus] = useState("1")
+
 
   const handleSubmit = (e) => {
     e.preventDefault()
     setShowModal(false)
 
     const newTask = {
+      id: (Date.now()).toString(),
       task,
-      status
+      status: "2",
     }
 
     setDataProject((prevProject) => ({

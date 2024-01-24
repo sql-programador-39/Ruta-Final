@@ -31,16 +31,25 @@ const rejectStyle = {
   borderColor: '#ff1744'
 };
 
-const BoxFiles = () => {
+const BoxFiles = ({dataProject, setDataProject}) => {
+  
+  const onDrop = (acceptedFiles) => {
+    // Aquí puedes actualizar el estado dataProject con la información de los archivos
+    setDataProject({
+      ...dataProject,
+      files: acceptedFiles,
+    });
+  };
   
   const {
     getRootProps,
     getInputProps,
-    acceptedFiles,
     isFocused,
     isDragAccept,
     isDragReject
-  } = useDropzone();
+  } = useDropzone({
+    onDrop
+  });
 
   const style = useMemo(() => ({
     ...baseStyle,
@@ -54,8 +63,8 @@ const BoxFiles = () => {
   ]);
 
   
-  const files = acceptedFiles.map(file => (
-    <li key={file.path}>
+  const files = dataProject.files?.map((file, index) => (
+    <li key={index}>
       <div className='flex bg-orange-500 px-2 py-1 rounded-md text-white h-16 items-center'>
         <img src={File} alt="File" className='me-2 w-7 h-7'/>
         <p>
@@ -75,14 +84,14 @@ const BoxFiles = () => {
         </div>
       </div>
       <aside>
-        {files.length > 0 && (
-          <div>
-            <h3 className='text-2xl font-bold text-center my-5'>Archivos</h3>
-            <ul className='grid grid-cols-2 gap-2'>
-              {files}
-            </ul>
-          </div>
-        )}
+        {dataProject.files && dataProject.files.length > 0 && (
+            <div>
+              <h3 className='text-2xl font-bold text-center my-5'>Archivos</h3>
+              <ul className='grid grid-cols-2 gap-2'>
+                {files}
+              </ul>
+            </div>
+          )}
       </aside>
     </section>
   );

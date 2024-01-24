@@ -4,8 +4,6 @@ import { useParams } from "react-router-dom"
 
 import useProjects from "../hooks/useProjects"
 
-
-import NoImage from "../components/NoImage"
 import Tag from "../components/Tag"
 import Table from "../components/Table"
 import TasksModal from "../components/TasksModal"
@@ -19,9 +17,12 @@ import TaskCard from "../components/TaskCard"
 
 const Project = () => {
 
-  const { setProjects, projects, project, setProject } = useProjects()
+  const { setProjects, projects, project, setProject, status, setStatus } = useProjects()
 
   const [dataProject, setDataProject] = useState({});
+  const [tasksCompleted, setTasksCompleted] = useState(0);
+  const [tasksPending, setTasksPending] = useState(0);
+  const [tasksDelayed, setTasksDelayed] = useState(0);
 
   const { id } = useParams()
 
@@ -37,6 +38,35 @@ const Project = () => {
 
     if (Object.keys(dataProject).length === 0) return
 
+    /* const  newAction = {
+      id: (Date.now()).toString(),
+      action: "Se ha creado el proyecto",
+      date: Date.now().toString()
+    }    */
+    
+    /* setDataProject((prevProject) => ({
+      ...prevProject,
+      actions: [...(prevProject.actions || []), newAction],
+    })) */
+
+    let completedCount = 0;
+  let pendingCount = 0;
+  let delayedCount = 0;
+
+  dataProject.tasks.forEach((task) => {
+    if (task.status === "1") {
+      completedCount++;
+    } else if (task.status === "2") {
+      pendingCount++;
+    } else if (task.status === "3") {
+      delayedCount++;
+    }
+  });
+
+  setTasksCompleted(completedCount);
+  setTasksPending(pendingCount);
+  setTasksDelayed(delayedCount);
+
     const updatedProjects = projects.map((p) =>
       p.id === id ? dataProject : p
     );
@@ -44,21 +74,16 @@ const Project = () => {
     setProjects(updatedProjects);
   }, [dataProject]);
 
+
   return (
     <section >
       <div className="grid grid-cols-2 m-auto h-screen container">
         <div className="m-auto w-1/2">
-          {
-            dataProject.image ? (
-              <img 
-                className="w-full" 
-                src={ dataProject.image } 
-                alt="Project image" 
-              />
-            ) : (
-              <NoImage />
-            )
-          }
+          <img 
+            className="w-full" 
+            src={ dataProject.image } 
+            alt="Project image" 
+          /> 
         </div>
 
         <div className=" my-auto">
@@ -104,20 +129,42 @@ const Project = () => {
           />
         </div>
 
+        <div className="flex justify-center items-center gap-5 text-center">
+          <div className=" bg-emerald-200 text-emerald-600 w-32 p-5 rounded-lg">
+            <h3 className="font-bold">Completadas</h3>
+            <p className="font-bold text-5xl">{tasksCompleted}</p>
+
+          </div>
+
+          <div className=" bg-yellow-200 text-yellow-600 h-full w-32  p-5 rounded-lg">
+            <h3 className="font-bold">Pendientes</h3>
+            <p className="font-bold text-5xl">{tasksPending}</p>
+          </div>
+
+          <div className=" bg-red-200 text-red-600 h-full p-5 w-32  rounded-lg">
+            <h3 className="font-bold">Atrasadas</h3>
+            <p className="font-bold text-5xl">{tasksDelayed}</p>
+          </div>
+
+        </div>
+
         <div className={`bg-gray-100 w-3/4 flex justify-center items-center mx-auto my-5 py-5 ${dataProject.tasks ? '' : 'h-40'}`}>
           {
-            dataProject.tasks ? (
-              <div className="grid grid-cols-5 gap-5 w-3/4">
+            dataProject.tasks.length !== 0 ? (
+              <div className="grid grid-cols-3 gap-5 w-3/4">
+                
                 {
-                  (dataProject.tasks).map((task, index) => (
+                  dataProject.tasks.map((task, index) => (
                     <div key={index}>
-                      <TaskCard 
-                        task={task.task}
-                        status={task.status}
+                      <TaskCard
+                        task={task} 
+                        dataProject={dataProject}
+                        setDataProject={setDataProject}
                       />
                     </div>
                   ))
                 }
+
               </div>
             ) : (
               <p className="text-xl">No hay tareas</p>
@@ -171,7 +218,10 @@ const Project = () => {
         <h2 className="text-2xl text-center font-bold">Archivos relacionados con el proyecto</h2>
         <div className="my-5 flex justify-center">
 
-          <BoxFiles />
+          <BoxFiles 
+            dataProject={dataProject}
+            setDataProject={setDataProject}
+          />
         </div>
         {/* verificar si hay archivos */}
       </div>
