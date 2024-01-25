@@ -6,7 +6,7 @@ const colorPalette = {
   "3": 'border-e-4 border-red-400',
 }
 
-const TaskCard = ({task, dataProject, setDataProject}) => {
+const TaskCard = ({ task, dataProject, setDataProject }) => {
   const [colorClass, setColorClass] = useState(colorPalette[task.status] || colorPalette['pending']);
 
   useEffect(() => {

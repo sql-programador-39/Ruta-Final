@@ -1,4 +1,3 @@
-
 const ScoreTasks = ({ tasksCompleted, tasksPending, tasksDelayed }) => {
   return (
     <>

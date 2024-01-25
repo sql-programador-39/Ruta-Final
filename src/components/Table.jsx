@@ -1,7 +1,7 @@
 import Sortable from 'sortablejs';
 import {  useRef, useEffect  } from "react"
 
-const Table = ({dataProject}) => {
+const Table = ({ dataProject }) => {
 
   const column1Ref = useRef(null);
   const column2Ref = useRef(null);

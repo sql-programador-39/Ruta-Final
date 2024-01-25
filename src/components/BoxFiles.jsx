@@ -35,10 +35,10 @@ const BoxFiles = ({dataProject, setDataProject}) => {
   
   const onDrop = (acceptedFiles) => {
     // Aquí puedes actualizar el estado dataProject con la información de los archivos
-    setDataProject({
-      ...dataProject,
-      files: acceptedFiles,
-    });
+    setDataProject((prevDataProject) => ({
+      ...prevDataProject,
+      files: [...(prevDataProject.files || []), ...acceptedFiles],
+    }));
   };
   
   const {

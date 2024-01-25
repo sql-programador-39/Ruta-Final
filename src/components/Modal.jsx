@@ -21,11 +21,8 @@ const Modal = () => {
     duration,
     setDuration,
     tasks,
-    setTasks,
     actions,
-    setActions,
     files,
-    setFiles,
   } = useProjects()
 
   const [showModal, setShowModal] = useState(false)

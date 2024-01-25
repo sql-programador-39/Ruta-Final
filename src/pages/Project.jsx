@@ -69,6 +69,7 @@ const Project = () => {
       date: new Date().toLocaleDateString()
     }
 
+    if (dataProject.tasks.length === 0) return
     setDataProject((prevProject) => ({
       ...prevProject,
       actions: [...(prevProject.actions || []), newAction],
@@ -77,6 +78,7 @@ const Project = () => {
 
   useEffect(() => { 
     if (Object.keys(dataProject).length === 0) return
+    if (dataProject.files.length === 0) return
 
     const  newAction = {
       id: (Date.now()).toString(),
@@ -203,7 +205,7 @@ const Project = () => {
 
         <div className={`bg-gray-100 container flex justify-center items-center mx-auto my-5 py-16 ${dataProject.actions ? '' : 'h-40'}`}>
            {
-            dataProject.actions ? (
+            dataProject.actions?.length ? (
               <div className="grid grid-cols-3 gap-5">
                 {
                   dataProject.actions.map(action => (

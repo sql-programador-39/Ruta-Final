@@ -46,7 +46,7 @@ const Projects = () => {
         <div className="grid grid-cols-4 gap-10">
 
           {
-            projects.length === 0 ? (
+            projects.length === 0 && searchTerm.length === 0 ? (
               <div className="text-center col-span-4">
                 <h2 className="text-2xl font-bold">No hay proyectos</h2>
               </div>
@@ -56,7 +56,7 @@ const Projects = () => {
           }
 
           {
-            filteredProjects.length === 0 ? (
+            filteredProjects.length === 0 && searchTerm.length !==0 ? (
               <div className="text-center col-span-4">
                 <h2 className="text-2xl font-bold">No hay resultados...</h2>
               </div>

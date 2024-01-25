@@ -1,6 +1,4 @@
-
-
-const SearchBar = ({onSearch}) => {
+const SearchBar = ({ onSearch }) => {
 
   return (
     <>

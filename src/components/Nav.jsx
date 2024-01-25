@@ -4,9 +4,9 @@ import styles from "../styles/nav"
 const Nav = () => {
   return (
     <>
-      <nav className={styles.nav.nav}>
+      <nav className={ styles.nav.nav }>
         <Link to="/">
-          <h1 className={styles.logo}>Logo</h1>
+          <h1 className={ styles.logo }>Logo</h1>
         </Link>
 
         <ul className="flex gap-2 font-bold">

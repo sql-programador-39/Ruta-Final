@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom"
 import NoImage from "./NoImage"
 
-
 const CardProyect = ({project}) => {
 
   const { id, name, description, image, tags, alias, propietario, date, duration, finalDate } = project
