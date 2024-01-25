@@ -1,13 +1,17 @@
 import { useState, useEffect } from 'react';
 
 const colorPalette = {
-  completed: 'border-e-4 border-emerald-400',
-  pending: 'border-e-4 border-yellow-400',
-  delayed: 'border-e-4 border-red-400',
+  "1": 'border-e-4 border-emerald-400',
+  "2": 'border-e-4 border-yellow-400',
+  "3": 'border-e-4 border-red-400',
 }
 
 const TaskCard = ({task, dataProject, setDataProject}) => {
   const [colorClass, setColorClass] = useState(colorPalette[task.status] || colorPalette['pending']);
+
+  useEffect(() => {
+    setColorClass(colorPalette[task.status] || colorPalette['pending']);
+  }, [task.status]);
 
   const handleDeleyed = () => {
     if (task.status !== "3" && task.status !== "1") {

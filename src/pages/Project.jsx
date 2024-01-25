@@ -10,6 +10,7 @@ import TaskCard from "../components/TaskCard"
 import ActionCard from "../components/ActionCard"
 import ScoreTasks from "../components/ScoreTasks"
 
+
 const Project = () => {
 
   const { setProjects, projects } = useProjects()
@@ -18,6 +19,7 @@ const Project = () => {
   const [tasksCompleted, setTasksCompleted] = useState(0);
   const [tasksPending, setTasksPending] = useState(0);
   const [tasksDelayed, setTasksDelayed] = useState(0);
+
 
   const { id } = useParams()
 
@@ -152,7 +154,7 @@ const Project = () => {
             />
         </div>
 
-        <div className={`bg-gray-100 container flex justify-center items-center mx-auto my-5 py-5 ${dataProject.tasks ? '' : 'h-40'}`}>
+        <div className={`bg-gray-100 container flex justify-center items-center mx-auto my-5 py-16 ${dataProject.tasks ? '' : 'h-40'}`}>
           {
             dataProject.tasks?.length !== 0 ? (
               <div className="grid grid-cols-3 gap-5 w-3/4">
@@ -199,7 +201,7 @@ const Project = () => {
         </div>
 
 
-        <div className={`bg-gray-100 container flex justify-center items-center mx-auto my-5 py-5 ${dataProject.actions ? '' : 'h-40'}`}>
+        <div className={`bg-gray-100 container flex justify-center items-center mx-auto my-5 py-16 ${dataProject.actions ? '' : 'h-40'}`}>
            {
             dataProject.actions ? (
               <div className="grid grid-cols-3 gap-5">

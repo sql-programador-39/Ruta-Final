@@ -4,7 +4,6 @@ import CardProyect from "../components/CardProyect"
 import Modal from "../components/Modal"
 import SearchBar from "../components/SearchBar"
 
-
 import useProjects from "../hooks/useProjects"
 
 
