@@ -23,7 +23,7 @@ const CardProyect = ({project}) => {
             }
           </header>
 
-          <main className="h-1/3">
+          <main className="">
             <div className="text-gray-700 text-base px-6 mt-5">
               <div className="font-bold text-xl mb-2">{name}</div>
               <p className=" mb-2">
