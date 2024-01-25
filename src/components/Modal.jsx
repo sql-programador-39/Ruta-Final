@@ -26,6 +26,7 @@ const Modal = () => {
   } = useProjects()
 
   const [showModal, setShowModal] = useState(false)
+  const [alert, setAlert] = useState("")
 
   const handleChange = (e) => {
     const {name, value} = e.target
@@ -60,7 +61,17 @@ const Modal = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    setShowModal(false)
+    
+
+    if(name.trim() === '' || description.trim() === '' || alias.trim() === '' || tags.length === 0 || propietario.trim() === '' || date.trim() === '' || duration.trim() === '') {
+      setAlert('Todos los campos son obligatorios');
+      setTimeout(() => {
+
+        setAlert('')
+      }, 3000)
+
+      return
+    }
 
     FinalDate(date, duration)
 
@@ -89,7 +100,7 @@ const Modal = () => {
     setPropietario('')
     setDate('')
     setDuration('')
-
+    setShowModal(false)
   }
 
   return (
@@ -125,7 +136,7 @@ const Modal = () => {
                 </div>
                 {/*body*/}
                 <div className="relative p-6 flex-auto">
-                  <form action="" onSubmit={handleSubmit}>
+                  <form action="">
                       <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
                           Nombre Clave:
@@ -232,6 +243,9 @@ const Modal = () => {
                   </form>
                 </div>
                 {/*footer*/}
+                <div>
+                  {alert && <p className="text-red-500 bg-red-300 font-bold text-center border border-red-500 rounded-lg py-2 mx-20 mb-5">{alert}</p>}
+                </div>
                 <div className="flex items-center justify-end p-6 border-t border-solid border-blueGray-200 rounded-b">
                   <button
                     className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150"
@@ -247,7 +261,9 @@ const Modal = () => {
                   >
                     Agregar Proyecto
                   </button>
+
                 </div>
+                  
               </div>
             </div>
           </div>
