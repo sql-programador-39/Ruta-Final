@@ -30,6 +30,7 @@ const ActionsModal = ({dataProject, setDataProject}) => {
 
     const newAction = {
       id: (Date.now()).toString(),
+
       action,
       date
     }
@@ -50,7 +51,7 @@ const ActionsModal = ({dataProject, setDataProject}) => {
       <button 
         onClick={() => setShowModal(true)}
         type='button'
-        className="bg-orange-500 text-white ms-5 py-1 px-3 rounded font-bold shadow-lg hover:bg-orange-600"
+        className="bg-orange-500 text-white py-1 px-3 rounded font-bold shadow-lg hover:bg-orange-600"
       >
         Nueva Acción
       </button>
@@ -85,6 +86,16 @@ const ActionsModal = ({dataProject, setDataProject}) => {
                         set={setAction}
                       />
                     </div>
+
+                    <label htmlFor="responsable" className='font-bold'>Responsable:</label>
+                    <input
+                      type="text"
+                      className="w-full border-2 border-gray-300 p-2 rounded my-1"
+                      id='responsable'
+                      name='responsable'
+                      placeholder='Responsable'
+                    />
+
 
                     <label htmlFor="date" className='font-bold'>Fecha de realización:</label>
                     <input 

@@ -65,7 +65,7 @@ const BoxFiles = ({dataProject, setDataProject}) => {
   
   const files = dataProject.files?.map((file, index) => (
     <li key={index}>
-      <div className='flex bg-orange-500 px-2 py-1 rounded-md text-white h-16 items-center'>
+      <div className='flex bg-gray-800 px-2 py-1 rounded-md text-white h-16 items-center'>
         <img src={File} alt="File" className='me-2 w-7 h-7'/>
         <p>
           {file.path} - {file.size} bytes

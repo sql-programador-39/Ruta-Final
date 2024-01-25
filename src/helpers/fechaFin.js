@@ -9,7 +9,7 @@ function formatDate(fecha) {
   const mes = String(fecha.getMonth() + 1).padStart(2, '0');
   const año = fecha.getFullYear();
 
-  return(`${año}-${mes}-${dia}`);
+  return(`${año}/${mes}/${dia}`);
 }
 
 const FinalDate = (date, duration) => {

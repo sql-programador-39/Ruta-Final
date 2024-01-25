@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect, useMemo } from "react";
+import { createContext, useState, useEffect } from "react";
 import data from '../../public/data/projects.js'
 
 const ProjectsContext = createContext()
@@ -19,11 +19,8 @@ const ProjectsProvider = ({children}) => {
   const [actions, setActions] = useState([])
   const [files, setFiles] = useState([])
   const [tasks, setTasks] = useState([])
-  
 
-  
-
-  /* const getProjects = async () => {
+  const getProjects = async () => {
     try {
       setProjects(data);
     } catch (error) {
@@ -33,12 +30,14 @@ const ProjectsProvider = ({children}) => {
 
   useEffect(() => {
     getProjects()
-  }, []) */
+  }, [])
 
   useEffect(() => {
     if (Object.keys(project).length === 0) return
 
     setProjects([...projects, project])
+
+    setTotalProjects(projects.length)
  
   }, [project])
 

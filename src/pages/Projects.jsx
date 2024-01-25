@@ -25,23 +25,54 @@ const Projects = () => {
 
   return (
     <>
-      <section className="w-3/4 mx-auto my-10">
-        <div className="flex justify-center">
+      <section className="container mx-auto my-10">
+        <div className="text-center">
           <h1 className="text-4xl font-bold">Todos nuestros proyectos</h1>
-        
-          <Modal />
+
         </div>
 
-        <div className="mt-5">
-          <SearchBar onSearch={handleSearch}  />
+        <div className="my-10 w-3/4 flex items-center justify-center mx-auto ">
+
+          <div className="w-1/4"></div>
+
+          <div className="w-2/4">
+            <SearchBar onSearch={handleSearch}  />
+          </div>
+
+          <div className="w-1/4">
+            <Modal />
+          </div>
         </div>
 
-        <div className="grid grid-cols-3">
-          {filteredProjects.map((project) => (
-            <CardProyect key={project.id} project={project} />
-          ))}
+        <div className="grid grid-cols-4 gap-10">
+
+          {
+            projects.length === 0 ? (
+              <div className="text-center col-span-4">
+                <h2 className="text-2xl font-bold">No hay proyectos</h2>
+              </div>
+            ) : (
+              <></>
+            )
+          }
+
+          {
+            filteredProjects.length === 0 ? (
+              <div className="text-center col-span-4">
+                <h2 className="text-2xl font-bold">No hay resultados...</h2>
+              </div>
+            ) : (
+              <>
+                {filteredProjects.map((project) => (
+                  <CardProyect key={project.id} project={project} />
+                 ))}
+              </>
+            )
+          }
+
+          
         </div>
-      </section> 
+      </section>
     </>
   )
 }

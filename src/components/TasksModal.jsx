@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import RichText from './RichText'
 
-const TasksModal = ({dataProject, setDataProject}) => {
+const TasksModal = ({ setDataProject}) => {
 
   const [showModal, setShowModal] = useState(false)
 
@@ -32,7 +32,7 @@ const TasksModal = ({dataProject, setDataProject}) => {
       <button 
         onClick={() => setShowModal(true)}
         type='button'
-        className="bg-orange-500 text-white ms-5 py-1 px-3 rounded font-bold shadow-lg hover:bg-orange-600"
+        className="bg-orange-500 text-white py-1 px-3 rounded font-bold shadow-lg hover:bg-orange-600"
       >
         Nueva Tarea
       </button>

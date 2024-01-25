@@ -1,3 +1,17 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+.card-tranform {
+  transition: transform 0.7s;
+}
+
+.card-tranform:hover {
+  transform: scale(1.025);
+}
+
+body {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
