@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import RichText from './RichText'
 
-const ActionsModal = ({dataProject, setDataProject}) => {
+const ActionsModal = ({ setProject}) => {
 
   const [showModal, setShowModal] = useState(false)
 
@@ -35,12 +35,10 @@ const ActionsModal = ({dataProject, setDataProject}) => {
       date
     }
 
-    setDataProject((prevProject) => ({
+    setProject((prevProject) => ({
       ...prevProject,
       actions: [...(prevProject.actions || []), newAction],
     }))
-
-    console.log(dataProject);
 
     setAction('')
     setDate('')

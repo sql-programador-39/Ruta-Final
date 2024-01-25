@@ -31,11 +31,11 @@ const rejectStyle = {
   borderColor: '#ff1744'
 };
 
-const BoxFiles = ({dataProject, setDataProject}) => {
+const BoxFiles = ({project, setProject}) => {
   
   const onDrop = (acceptedFiles) => {
     // Aquí puedes actualizar el estado dataProject con la información de los archivos
-    setDataProject((prevDataProject) => ({
+    setProject((prevDataProject) => ({
       ...prevDataProject,
       files: [...(prevDataProject.files || []), ...acceptedFiles],
     }));
@@ -63,7 +63,7 @@ const BoxFiles = ({dataProject, setDataProject}) => {
   ]);
 
   
-  const files = dataProject.files?.map((file, index) => (
+  const files = project.files?.map((file, index) => (
     <li key={index}>
       <div className='flex bg-gray-800 px-2 py-1 rounded-md text-white h-16 items-center'>
         <img src={File} alt="File" className='me-2 w-7 h-7'/>
@@ -84,7 +84,7 @@ const BoxFiles = ({dataProject, setDataProject}) => {
         </div>
       </div>
       <aside>
-        {dataProject.files && dataProject.files.length > 0 && (
+        {project.files && project.files.length > 0 && (
             <div>
               <h3 className='text-2xl font-bold text-center my-5'>Archivos</h3>
               <ul className='grid grid-cols-2 gap-2'>

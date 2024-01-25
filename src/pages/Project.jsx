@@ -13,7 +13,7 @@ import ScoreTasks from "../components/ScoreTasks"
 
 const Project = () => {
 
-  const { setProjects, projects } = useProjects()
+  const { setProjects, projects, setProject, project } = useProjects()
 
   const [dataProject, setDataProject] = useState({});
   const [tasksCompleted, setTasksCompleted] = useState(0);
@@ -27,18 +27,18 @@ const Project = () => {
   useEffect(() => {
     const foundProject = projects.find((p) => p.id === id);
     if (foundProject) {
-      setDataProject({ ...foundProject });
+      setProject({ ...foundProject });
     }
   }, [])
 
   useEffect(() => {
-    if (Object.keys(dataProject).length === 0) return
+    if (Object.keys(project).length === 0) return
 
     let completedCount = 0;
     let pendingCount = 0;
     let delayedCount = 0;
 
-    dataProject.tasks.forEach((task) => {
+    project.tasks.forEach((task) => {
       if (task.status === "1") {
         completedCount++;
       } else if (task.status === "2") {
@@ -53,14 +53,14 @@ const Project = () => {
     setTasksDelayed(delayedCount);
 
     const updatedProjects = projects.map((p) =>
-      p.id === id ? dataProject : p
+      p.id === id ? project : p
     );
 
     setProjects(updatedProjects);
-  }, [dataProject]);
+  }, [project]);
 
   useEffect(() => { 
-    if (Object.keys(dataProject).length === 0) return
+    if (Object.keys(project).length === 0) return
 
     const  newAction = {
       id: (Date.now()).toString(),
@@ -69,16 +69,16 @@ const Project = () => {
       date: new Date().toLocaleDateString()
     }
 
-    if (dataProject.tasks.length === 0) return
-    setDataProject((prevProject) => ({
+    if (project.tasks.length === 0) return
+    setProject((prevProject) => ({
       ...prevProject,
       actions: [...(prevProject.actions || []), newAction],
     }))
-  }, [dataProject.tasks])
+  }, [project.tasks])
 
   useEffect(() => { 
-    if (Object.keys(dataProject).length === 0) return
-    if (dataProject.files.length === 0) return
+    if (Object.keys(project).length === 0) return
+    if (project.files.length === 0) return
 
     const  newAction = {
       id: (Date.now()).toString(),
@@ -87,11 +87,11 @@ const Project = () => {
       date: new Date().toLocaleDateString()
     }
 
-    setDataProject((prevProject) => ({
+    setProject((prevProject) => ({
       ...prevProject,
       actions: [...(prevProject.actions || []), newAction],
     }))
-  }, [dataProject.files])
+  }, [project.files])
 
 
   return (
@@ -100,24 +100,24 @@ const Project = () => {
         <div className="m-auto w-1/2">
           <img
             className="w-full"
-            src={ dataProject.image }
+            src={ project.image }
             alt="Project image"
           />
         </div>
 
         <div className="my-auto">
-          <h1 className="text-3xl font-bold">{dataProject.name}</h1>
-          <p className="text-xl text-gray-500 pb-3 mb-2 border-b">{dataProject.alias}</p>
-          <p className="text-xl">{dataProject.description}</p>
-          <p className="text-xl my-2"><span className="font-bold text-2xl">Propietario:</span> {dataProject.propietario}</p>
-          <p className="text-xl my-2"><span className="font-bold text-2xl">Duración:</span> {dataProject.duration} Semanas</p>
-          <p className="text-xl my-2"><span className="font-bold text-2xl">Fecha de inicio:</span> {dataProject.date}</p>
-          <p className="text-xl my-2"><span className="font-bold text-2xl">Fecha de finalización:</span> {dataProject.finalDate}</p>
+          <h1 className="text-3xl font-bold">{project.name}</h1>
+          <p className="text-xl text-gray-500 pb-3 mb-2 border-b">{project.alias}</p>
+          <p className="text-xl">{project.description}</p>
+          <p className="text-xl my-2"><span className="font-bold text-2xl">Propietario:</span> {project.propietario}</p>
+          <p className="text-xl my-2"><span className="font-bold text-2xl">Duración:</span> {project.duration} Semanas</p>
+          <p className="text-xl my-2"><span className="font-bold text-2xl">Fecha de inicio:</span> {project.date}</p>
+          <p className="text-xl my-2"><span className="font-bold text-2xl">Fecha de finalización:</span> {project.finalDate}</p>
         <div>
             {
-              dataProject.tags &&
+              project.tags &&
               <div className="pt-4 pb-5 grid grid-cols-5 gap-2">
-                {(dataProject.tags).map((tag, index) => (
+                {(project.tags).map((tag, index) => (
                   <div key={index} className='bg-gray-800 text-white text-sm font-medium px-2.5 py-1 rounded-full flex justify-center w-full'>
                     <div className="w-full text-center">
                       {tag}
@@ -142,8 +142,8 @@ const Project = () => {
           {/* verificar si hay tareas */}
           <div className="w-1/4">
             <TasksModal
-              dataProject={dataProject}
-              setDataProject={setDataProject}
+              project={project}
+              setProject={setProject}
             />
           </div>
         </div>
@@ -158,16 +158,16 @@ const Project = () => {
 
         <div className={`bg-gray-100 container flex justify-center items-center mx-auto my-5 py-16 ${dataProject.tasks ? '' : 'h-40'}`}>
           {
-            dataProject.tasks?.length !== 0 ? (
+            project.tasks?.length !== 0 ? (
               <div className="grid grid-cols-3 gap-5 w-3/4">
 
                 {
-                  dataProject.tasks?.map((task, index) => (
+                  project.tasks?.map((task, index) => (
                     <div key={index}>
                       <TaskCard
                         task={task}
-                        dataProject={dataProject}
-                        setDataProject={setDataProject}
+                        project={project}
+                        setProject={setProject}
                       />
                     </div>
                   ))
@@ -196,8 +196,8 @@ const Project = () => {
 
           <div className="w-1/4">
             <ActionsModal
-              dataProject={dataProject}
-              setDataProject={setDataProject}
+              project={project}
+              setProject={setProject}
             />
           </div>
         </div>
@@ -205,10 +205,10 @@ const Project = () => {
 
         <div className={`bg-gray-100 container flex justify-center items-center mx-auto my-5 py-16 ${dataProject.actions ? '' : 'h-40'}`}>
            {
-            dataProject.actions?.length ? (
+            project.actions?.length ? (
               <div className="grid grid-cols-3 gap-5">
                 {
-                  dataProject.actions.map(action => (
+                  project.actions.map(action => (
                     <ActionCard
                       key={action.id}
                       action={action}
@@ -229,8 +229,8 @@ const Project = () => {
         <div className="my-5 flex justify-center">
 
           <BoxFiles
-            dataProject={dataProject}
-            setDataProject={setDataProject}
+            project={project}
+            setProject={setProject}
           />
         </div>
         {/* verificar si hay archivos */}

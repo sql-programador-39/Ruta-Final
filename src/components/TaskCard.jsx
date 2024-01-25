@@ -6,7 +6,7 @@ const colorPalette = {
   "3": 'border-e-4 border-red-400',
 }
 
-const TaskCard = ({ task, dataProject, setDataProject }) => {
+const TaskCard = ({ task, project, setProject }) => {
   const [colorClass, setColorClass] = useState(colorPalette[task.status] || colorPalette['pending']);
 
   useEffect(() => {
@@ -15,14 +15,14 @@ const TaskCard = ({ task, dataProject, setDataProject }) => {
 
   const handleDeleyed = () => {
     if (task.status !== "3" && task.status !== "1") {
-      const updatedTasks = dataProject.tasks.map((item) => {
+      const updatedTasks = project.tasks.map((item) => {
         if (item.id === task.id) {
           item.status = "3"; // Cambiar a estado pendiente solo si no está pendiente actualmente
         }
         return item;
       });
 
-      setDataProject((prevProject) => ({
+      setProject((prevProject) => ({
         ...prevProject,
         tasks: updatedTasks,
       }));
@@ -33,14 +33,14 @@ const TaskCard = ({ task, dataProject, setDataProject }) => {
 
   const handleCompleted = () => {
     if (task.status !== "1") {
-      const updatedTasks = dataProject.tasks.map((item) => {
+      const updatedTasks = project.tasks.map((item) => {
         if (item.id === task.id) {
           item.status = "1"; // Cambiar a estado pendiente solo si no está pendiente actualmente
         }
         return item;
       });
 
-      setDataProject((prevProject) => ({
+      setProject((prevProject) => ({
         ...prevProject,
         tasks: updatedTasks,
       }));
@@ -51,14 +51,14 @@ const TaskCard = ({ task, dataProject, setDataProject }) => {
 
   const handlePending = () => {
     if (task.status !== "2" && task.status !== "1") {
-      const updatedTasks = dataProject.tasks.map((item) => {
+      const updatedTasks = project.tasks.map((item) => {
         if (item.id === task.id) {
           item.status = "2"; // Cambiar a estado pendiente solo si no está pendiente actualmente
         }
         return item;
       });
 
-      setDataProject((prevProject) => ({
+      setProject((prevProject) => ({
         ...prevProject,
         tasks: updatedTasks,
       }));

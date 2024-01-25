@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import RichText from './RichText'
 
-const TasksModal = ({ setDataProject}) => {
+const TasksModal = ({ setProject}) => {
 
   const [showModal, setShowModal] = useState(false)
 
@@ -19,7 +19,7 @@ const TasksModal = ({ setDataProject}) => {
       status: "2",
     }
 
-    setDataProject((prevProject) => ({
+    setProject((prevProject) => ({
       ...prevProject,
       tasks: [...(prevProject.tasks || []), newTask],
     }))
