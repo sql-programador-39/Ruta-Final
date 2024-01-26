@@ -95,9 +95,9 @@ const Project = () => {
 
 
   return (
-    <section >
-      <div className="grid grid-cols-2 m-auto h-screen container">
-        <div className="m-auto w-1/2">
+    <section className="w-11/12 mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 m-auto h-screen md:h-auto my-10 container">
+        <div className="m-auto w-4/6 sm:w-1/2 md:w-3/4">
           <img
             className="w-full"
             src={ dataProject.image }
@@ -105,8 +105,8 @@ const Project = () => {
           />
         </div>
 
-        <div className="my-auto">
-          <h1 className="text-3xl font-bold">{dataProject.name}</h1>
+        <div className="m-auto w-11/12 md:w-full mt-2 md:mt-0">
+          <h1 className="text-2xl sm:text-3xl font-bold sm:mt-0">{dataProject.name}</h1>
           <p className="text-xl text-gray-500 pb-3 mb-2 border-b">{dataProject.alias}</p>
           <p className="text-xl">{dataProject.description}</p>
           <p className="text-xl my-2"><span className="font-bold text-2xl">Propietario:</span> {dataProject.propietario}</p>
@@ -116,7 +116,7 @@ const Project = () => {
         <div>
             {
               dataProject.tags &&
-              <div className="pt-4 pb-5 grid grid-cols-5 gap-2">
+              <div className="pt-4 pb-5 grid grid-cols-2 xl:grid-cols-5 gap-2">
                 {(dataProject.tags).map((tag, index) => (
                   <div key={index} className='bg-gray-800 text-white text-sm font-medium px-2.5 py-1 rounded-full flex justify-center w-full'>
                     <div className="w-full text-center">
@@ -139,7 +139,6 @@ const Project = () => {
 
           <h2 className="text-2xl font-bold text-center w-1/4">Tareas</h2>
 
-          {/* verificar si hay tareas */}
           <div className="w-1/4">
             <TasksModal
               dataProject={dataProject}
@@ -148,7 +147,7 @@ const Project = () => {
           </div>
         </div>
 
-        <div className="flex justify-center items-center gap-5 text-center mb-16 mt-10">
+        <div className="grid grid-cols-3 lg:w-4/6 xl:w-1/2 mx-auto justify-center items-center gap-3 text-center mb-12 mt-10">
             <ScoreTasks 
               tasksCompleted={tasksCompleted}
               tasksPending={tasksPending}
@@ -156,10 +155,10 @@ const Project = () => {
             />
         </div>
 
-        <div className={`bg-gray-100 container flex justify-center items-center mx-auto my-5 py-16 ${dataProject.tasks ? '' : 'h-40'}`}>
+        <div className={`bg-gray-100 container flex justify-center items-center mx-auto py-16 ${dataProject.tasks ? '' : 'h-40'}`}>
           {
             dataProject.tasks?.length !== 0 ? (
-              <div className="grid grid-cols-3 gap-5 w-3/4">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-3/4">
 
                 {
                   dataProject.tasks?.map((task, index) => (
@@ -203,10 +202,10 @@ const Project = () => {
         </div>
 
 
-        <div className={`bg-gray-100 container flex justify-center items-center mx-auto my-5 py-16 ${dataProject.actions ? '' : 'h-40'}`}>
+        <div className={`bg-gray-100 container sm:flex justify-center items-center mx-auto my-5 py-16 ${dataProject.actions ? '' : 'h-40'}`}>
            {
             dataProject.actions?.length ? (
-              <div className="grid grid-cols-3 gap-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
                 {
                   dataProject.actions.map(action => (
                     <ActionCard

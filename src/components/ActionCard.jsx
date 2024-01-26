@@ -2,7 +2,7 @@ const ActionCard = ({ action }) => {
 
   return (
     <>
-      <div className="bg-gray-800 text-white p-2 rounded-lg">
+      <div className="bg-gray-800 text-white p-2 rounded-lg w-full">
         <div className="text-xl font-bold">
           {action.action}
         </div>
