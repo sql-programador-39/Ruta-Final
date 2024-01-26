@@ -6,23 +6,20 @@ const TagForm = ({setTags, tags}) => {
 
   const handleKeyDown = (e) => {
     if (e.key === 'Enter' && tagInput.trim() !== '') {
-      // Agregar la etiqueta a la lista de etiquetas
       setTags([...tags, tagInput.trim()]);
 
-      // Limpiar el input de etiquetas
+
       setTagInput('');
     }
   };
 
   const handleDeleteTag = (index) => {
-    // Eliminar la etiqueta de la lista de etiquetas
     setTags(tags.filter((_, i) => i !== index));
   }
 
   return (
     <div>
       <div>
-        {/* Input para ingresar etiquetas */}
         <input
           type="text"
           value={tagInput}
@@ -32,8 +29,8 @@ const TagForm = ({setTags, tags}) => {
           placeholder="Agregar etiquetas apretando Enter"
         />
       </div>
+      <p className='text-sm text-slate-400'>Para agregar una o varias etiquetas aprete la tecla Enter</p>
       <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 mt-5'>
-        {/* Mostrar las etiquetas debajo del input */}
         {tags.map((tag, index) => (
           <div key={index} className='my-1'>
             <div className='bg-gray-800 text-white text-sm font-medium px-2.5 py-1 rounded-full flex justify-between w-full'>

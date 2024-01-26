@@ -118,9 +118,9 @@ const Modal = () => {
             className="overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none "
           >
             <div className="relative w-11/12 mx-auto md:max-w-3xl my-5">
-              {/*content*/}
+              
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
-                {/*header*/}
+                
                 <div className="flex items-center justify-between p-5 border-b border-solid border-blueGray-200 rounded-t">
                   <h3 className="text-3xl font-semibold">
                     Agregar Nuevo Proyecto
@@ -134,7 +134,7 @@ const Modal = () => {
                     </span>
                   </button>
                 </div>
-                {/*body*/}
+                
                 <div className="relative p-6 flex-auto">
                   <form action="">
                       <div className="mb-4">
@@ -242,7 +242,7 @@ const Modal = () => {
                       </div>
                   </form>
                 </div>
-                {/*footer*/}
+                
                 <div>
                   {alert && <p className="text-red-500 bg-red-300 font-bold text-center border border-red-500 rounded-lg py-2 mx-20 mb-5">{alert}</p>}
                 </div>

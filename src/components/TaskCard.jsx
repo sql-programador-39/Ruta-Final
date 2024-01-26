@@ -17,7 +17,7 @@ const TaskCard = ({ task, dataProject, setDataProject }) => {
     if (task.status !== "3" && task.status !== "1") {
       const updatedTasks = dataProject.tasks.map((item) => {
         if (item.id === task.id) {
-          item.status = "3"; // Cambiar a estado pendiente solo si no está pendiente actualmente
+          item.status = "3"; 
         }
         return item;
       });
@@ -35,7 +35,7 @@ const TaskCard = ({ task, dataProject, setDataProject }) => {
     if (task.status !== "1") {
       const updatedTasks = dataProject.tasks.map((item) => {
         if (item.id === task.id) {
-          item.status = "1"; // Cambiar a estado pendiente solo si no está pendiente actualmente
+          item.status = "1"; 
         }
         return item;
       });
@@ -53,7 +53,7 @@ const TaskCard = ({ task, dataProject, setDataProject }) => {
     if (task.status !== "2" && task.status !== "1") {
       const updatedTasks = dataProject.tasks.map((item) => {
         if (item.id === task.id) {
-          item.status = "2"; // Cambiar a estado pendiente solo si no está pendiente actualmente
+          item.status = "2"; 
         }
         return item;
       });

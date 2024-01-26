@@ -12,8 +12,8 @@ const Table = ({ dataProject }) => {
       animation: 200,
       group: 'shared',
       onEnd: (event) => {
-        // Lógica para manejar el cambio de orden
-        console.log('Item moved:', event);
+        
+        /* console.log('Item moved:', event); */
       },
     };
 
@@ -57,7 +57,6 @@ const Table = ({ dataProject }) => {
               <div className="w-1/3 mx-5">
                 <h3 className='text-xl font-bold text-center mb-3'>Tareas Atrasadas</h3>
                 <div ref={column2Ref} className="cursor-pointer rounded bg-orange-500 p-5 min-h-60 h-auto">
-                    {/* Se llena cuando se arrastran las tareas atrasadas */}
                 </div>
               </div>
               
@@ -65,7 +64,6 @@ const Table = ({ dataProject }) => {
               <div className="w-1/3 mx-5">
                 <h3 className='text-xl font-bold text-center mb-3'>Tareas Vigentes</h3>
                 <div ref={column3Ref} className="cursor-pointer rounded bg-orange-500 p-5 min-h-60 h-auto">
-                  {/* Se llena cuando se arrastran las tareas vigentes */}
                 </div>
               </div>  
             </div>
