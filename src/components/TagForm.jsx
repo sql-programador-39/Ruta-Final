@@ -32,7 +32,7 @@ const TagForm = ({setTags, tags}) => {
           placeholder="Agregar etiquetas apretando Enter"
         />
       </div>
-      <div className='grid grid-cols-5 gap-2 mt-5'>
+      <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-2 mt-5'>
         {/* Mostrar las etiquetas debajo del input */}
         {tags.map((tag, index) => (
           <div key={index} className='my-1'>
