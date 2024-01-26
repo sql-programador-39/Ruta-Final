@@ -75,7 +75,7 @@ const BoxFiles = ({dataProject, setDataProject}) => {
   ));
 
   return (
-    <section className='w-2/3'>
+    <section className='w-full'>
       <div {...getRootProps(({style}))}>
         <input {...getInputProps()} />
         <div className='flex flex-col justify-center items-center'>

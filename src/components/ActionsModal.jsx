@@ -7,6 +7,7 @@ const ActionsModal = ({dataProject, setDataProject}) => {
 
   const [action, setAction] = useState("")
   const [date, setDate] = useState("")
+  const [responsable, setResponsable] = useState("")
   
 
   const handleChange = (e) => {
@@ -18,6 +19,9 @@ const ActionsModal = ({dataProject, setDataProject}) => {
         break;
       case 'date':
         setDate(value)
+        break;
+      case 'responsable':
+        setResponsable(value)
         break;
       default:
         break;
@@ -32,6 +36,7 @@ const ActionsModal = ({dataProject, setDataProject}) => {
       id: (Date.now()).toString(),
 
       action,
+      responsable,
       date
     }
 
@@ -51,7 +56,7 @@ const ActionsModal = ({dataProject, setDataProject}) => {
       <button 
         onClick={() => setShowModal(true)}
         type='button'
-        className="bg-orange-500 text-white py-1 px-3 rounded font-bold shadow-lg hover:bg-orange-600"
+        className="bg-orange-500 text-white py-1 px-3 rounded-lg mx-auto w-full font-bold shadow-lg hover:bg-orange-600"
       >
         Nueva Acción
       </button>
@@ -60,7 +65,7 @@ const ActionsModal = ({dataProject, setDataProject}) => {
           <div
             className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
           >
-            <div className="relative w-auto my-6 mx-auto max-w-3xl">
+            <div className="relative my-6 mx-auto lg:w-1/2 w-11/12">
               {/*content*/}
               <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 {/*header*/}
@@ -94,6 +99,7 @@ const ActionsModal = ({dataProject, setDataProject}) => {
                       id='responsable'
                       name='responsable'
                       placeholder='Responsable'
+                      onChange={handleChange}
                     />
 
 

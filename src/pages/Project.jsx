@@ -132,14 +132,14 @@ const Project = () => {
 
       <div className="container mx-auto">
 
-        <div className="flex justify-center items-center mb-5 w-1/3 mx-auto">
-          <div className="w-1/4">
+        <div className="md:flex justify-center items-center mb-5 w-1/2 lg:w-1/3 mx-auto">
+          <div className="w-0 md:w-2/6">
 
           </div>
 
-          <h2 className="text-2xl font-bold text-center w-1/4">Tareas</h2>
+          <h2 className="text-2xl font-bold text-center w-full md:w-4/6">Tareas</h2>
 
-          <div className="w-1/4">
+          <div className="w-full md:w-2/6 mx-auto mt-3 md:mt-0">
             <TasksModal
               dataProject={dataProject}
               setDataProject={setDataProject}
@@ -155,7 +155,7 @@ const Project = () => {
             />
         </div>
 
-        <div className={`bg-gray-100 container flex justify-center items-center mx-auto py-16 ${dataProject.tasks ? '' : 'h-40'}`}>
+        <div className={`bg-gray-100 rounded-lg container flex justify-center items-center mx-auto py-16 ${dataProject.tasks ? '' : 'h-40'}`}>
           {
             dataProject.tasks?.length !== 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 w-3/4">
@@ -186,14 +186,14 @@ const Project = () => {
 
       <div className="my-10">
 
-        <div className="flex justify-center items-center mb-5 w-1/3 mx-auto">
-          <div className="w-1/4">
+      <div className="md:flex justify-center items-center mb-5 w-1/2 lg:w-1/3 mx-auto">
+          <div className="w-0 md:w-2/6">
 
           </div>
 
-          <h2 className="text-2xl text-center font-bold w-1/4 my-5">Acciones</h2>
+          <h2 className="text-2xl font-bold text-center w-full md:w-4/6">Acciones</h2>
 
-          <div className="w-1/4">
+          <div className="w-full md:w-2/6 mx-auto mt-3 md:mt-0">
             <ActionsModal
               dataProject={dataProject}
               setDataProject={setDataProject}
@@ -202,7 +202,7 @@ const Project = () => {
         </div>
 
 
-        <div className={`bg-gray-100 container sm:flex justify-center items-center mx-auto my-5 py-16 ${dataProject.actions ? '' : 'h-40'}`}>
+        <div className={`bg-gray-100 rounded-lg container sm:flex justify-center items-center mx-auto my-5 py-16 ${dataProject.actions ? '' : 'h-40'}`}>
            {
             dataProject.actions?.length ? (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
