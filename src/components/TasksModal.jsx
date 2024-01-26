@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 import RichText from './RichText'
 
-const TasksModal = ({ setDataProject}) => {
+const TasksModal = ({ setDataProject }) => {
 
   const [showModal, setShowModal] = useState(false)
 

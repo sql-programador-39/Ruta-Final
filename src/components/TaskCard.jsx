@@ -29,7 +29,7 @@ const TaskCard = ({ task, dataProject, setDataProject }) => {
 
       const  newAction = {
         id: (Date.now()).toString(),
-        action: "Se modifico el estado de una tarea a atrasada",
+        action: `Se modifico el estado de la tarea ${task.id} a atrasada`,
         responsable: "Camilo Ardila",
         date: new Date().toLocaleDateString()
       }
@@ -88,7 +88,7 @@ const TaskCard = ({ task, dataProject, setDataProject }) => {
       }));
       const  newAction = {
         id: (Date.now()).toString(),
-        action: "Se modifico el estado de una tarea a pendiente",
+        action: `Se modifico el estado de la tarea ${task.id} a pendiente`,
         responsable: "Camilo Ardila",
         date: new Date().toLocaleDateString()
       }
