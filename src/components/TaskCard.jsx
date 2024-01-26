@@ -106,7 +106,7 @@ const TaskCard = ({ task, dataProject, setDataProject }) => {
       <div className={`bg-gray-800 text-white p-3 rounded-lg font-bold flex `}> 
           <div className={`text-center ${colorClass} pe-5 flex flex-col justify-center items-center w-11/12`}>
             <p>
-              {task.id}
+              Tarea # {task.id}
             </p>
             <p>
               {task.task}
