@@ -139,7 +139,7 @@ const Modal = () => {
                   <form action="">
                       <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="name">
-                          Nombre Clave:
+                          Nombre Clave *
                         </label>
                         <input
                           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -154,7 +154,7 @@ const Modal = () => {
 
                       <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="alias">
-                          Alias:
+                          Alias *
                         </label>
                         <input
                           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -170,7 +170,7 @@ const Modal = () => {
 
                       <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="tags">
-                          Tags:
+                          Tags *
                         </label>
                         <TagForm
                           setTags={setTags}
@@ -180,7 +180,7 @@ const Modal = () => {
 
                       <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="description">
-                          Descripción:
+                          Descripción *
                         </label>
                         <textarea
                           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline h-20"
@@ -195,7 +195,7 @@ const Modal = () => {
 
                       <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="propietario">
-                            Propietario:
+                            Propietario *
                           </label>
                           <select
                             name="propietario"
@@ -213,7 +213,7 @@ const Modal = () => {
 
                       <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="date">
-                          Fecha de inicio:
+                          Fecha de inicio *
                         </label>
                         <input
                           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
@@ -228,7 +228,7 @@ const Modal = () => {
 
                       <div className="mb-4">
                         <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="duration">
-                          Duración en semanas:
+                          Duración en semanas *
                         </label>
                         <input
                           className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"

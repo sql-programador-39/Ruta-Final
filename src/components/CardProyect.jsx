@@ -10,7 +10,6 @@ const CardProyect = ({project}) => {
 
   useEffect(() => {
     setTagsList(tags.map(tag => shortenText(tag, 10)))
-    console.log(tagsList);
   }, [])
 
   const shortenText = (text, maxLength) => {

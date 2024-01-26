@@ -39,6 +39,18 @@ const BoxFiles = ({dataProject, setDataProject}) => {
       ...prevDataProject,
       files: [...(prevDataProject.files || []), ...acceptedFiles],
     }));
+
+    const  newAction = {
+      id: (Date.now()).toString(),
+      action: "Se agrego un nuevo archivo al proyecto",
+      responsable: "Camilo Ardila",
+      date: new Date().toLocaleDateString()
+    }
+
+    setDataProject((prevProject) => ({
+      ...prevProject,
+      actions: [...(prevProject.actions || []), newAction],
+    }))
   };
   
   const {

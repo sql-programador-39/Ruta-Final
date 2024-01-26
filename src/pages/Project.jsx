@@ -13,12 +13,14 @@ import ScoreTasks from "../components/ScoreTasks"
 
 const Project = () => {
 
-  const { setProjects, projects } = useProjects()
+  const { setProjects, projects, project, setProject } = useProjects()
 
   const [dataProject, setDataProject] = useState({});
   const [tasksCompleted, setTasksCompleted] = useState(0);
   const [tasksPending, setTasksPending] = useState(0);
   const [tasksDelayed, setTasksDelayed] = useState(0);
+  const [counterTasks, setCounterTasks] = useState(0)
+  const [counterFiles, setCounterFiles] = useState(0)
 
 
   const { id } = useParams()
@@ -58,41 +60,6 @@ const Project = () => {
 
     setProjects(updatedProjects);
   }, [dataProject]);
-
-  useEffect(() => { 
-    if (Object.keys(dataProject).length === 0) return
-
-    const  newAction = {
-      id: (Date.now()).toString(),
-      action: "Se creo o modifico una tarea",
-      responsable: "Juan Perez",
-      date: new Date().toLocaleDateString()
-    }
-
-    if (dataProject.tasks.length === 0) return
-    setDataProject((prevProject) => ({
-      ...prevProject,
-      actions: [...(prevProject.actions || []), newAction],
-    }))
-  }, [dataProject.tasks])
-
-  useEffect(() => { 
-    if (Object.keys(dataProject).length === 0) return
-    if (dataProject.files.length === 0) return
-
-    const  newAction = {
-      id: (Date.now()).toString(),
-      action: "Se agrego un archivo al proyecto",
-      responsable: "Camilo Ardila",
-      date: new Date().toLocaleDateString()
-    }
-
-    setDataProject((prevProject) => ({
-      ...prevProject,
-      actions: [...(prevProject.actions || []), newAction],
-    }))
-  }, [dataProject.files])
-
 
   return (
     <section className="w-11/12 mx-auto">

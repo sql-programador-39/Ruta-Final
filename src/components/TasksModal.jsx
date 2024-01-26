@@ -24,6 +24,18 @@ const TasksModal = ({ setDataProject}) => {
       tasks: [...(prevProject.tasks || []), newTask],
     }))
 
+    const  newAction = {
+      id: (Date.now()).toString(),
+      action: "Se agrego una tarea",
+      responsable: "Camilo Ardila",
+      date: new Date().toLocaleDateString()
+    }
+
+    setDataProject((prevProject) => ({
+      ...prevProject,
+      actions: [...(prevProject.actions || []), newAction],
+    }))
+
     setTask('')
   }
 

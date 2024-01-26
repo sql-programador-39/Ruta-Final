@@ -26,6 +26,18 @@ const TaskCard = ({ task, dataProject, setDataProject }) => {
         ...prevProject,
         tasks: updatedTasks,
       }));
+
+      const  newAction = {
+        id: (Date.now()).toString(),
+        action: "Se modifico el estado de una tarea a atrasada",
+        responsable: "Camilo Ardila",
+        date: new Date().toLocaleDateString()
+      }
+  
+      setDataProject((prevProject) => ({
+        ...prevProject,
+        actions: [...(prevProject.actions || []), newAction],
+      }))
       setColorClass(colorPalette['delayed']);
     }
 
@@ -44,6 +56,18 @@ const TaskCard = ({ task, dataProject, setDataProject }) => {
         ...prevProject,
         tasks: updatedTasks,
       }));
+
+      const  newAction = {
+        id: (Date.now()).toString(),
+        action: "Se agrego un nuevo archivo al proyecto a completada",
+        responsable: "Camilo Ardila",
+        date: new Date().toLocaleDateString()
+      }
+  
+      setDataProject((prevProject) => ({
+        ...prevProject,
+        actions: [...(prevProject.actions || []), newAction],
+      }))
       setColorClass(colorPalette['completed']);
     }
 
@@ -62,6 +86,17 @@ const TaskCard = ({ task, dataProject, setDataProject }) => {
         ...prevProject,
         tasks: updatedTasks,
       }));
+      const  newAction = {
+        id: (Date.now()).toString(),
+        action: "Se modifico el estado de una tarea a pendiente",
+        responsable: "Camilo Ardila",
+        date: new Date().toLocaleDateString()
+      }
+  
+      setDataProject((prevProject) => ({
+        ...prevProject,
+        actions: [...(prevProject.actions || []), newAction],
+      }))
       setColorClass(colorPalette['pending']);
     }
   }
