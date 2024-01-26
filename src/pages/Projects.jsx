@@ -43,7 +43,7 @@ const Projects = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-4 gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-5 md:w-11/12 mx-auto">
 
           {
             projects.length === 0 && searchTerm.length === 0 ? (

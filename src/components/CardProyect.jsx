@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react"
 import { Link } from "react-router-dom"
 import NoImage from "./NoImage"
 
@@ -5,9 +6,23 @@ const CardProyect = ({project}) => {
 
   const { id, name, description, image, tags, alias, propietario, date, duration, finalDate } = project
 
+  const [tagsList, setTagsList] = useState(tags)
+
+  useEffect(() => {
+    setTagsList(tags.map(tag => shortenText(tag, 10)))
+    console.log(tagsList);
+  }, [])
+
+  const shortenText = (text, maxLength) => {
+    if (text && text.length > maxLength) {
+      return `${text.substring(0, maxLength)}...`
+    }
+    return text
+  }
+
   return (
     <>
-      <article className="max-w-sm rounded-lg overflow-hidden shadow-md hover:shadow-xl card-tranform">
+      <article className="rounded-lg overflow-hidden shadow-md hover:shadow-xl card-tranform w-11/12 md:w-full mx-auto">
         <Link to={`/projects/${id}`}>
           <header>
             {
@@ -60,9 +75,9 @@ const CardProyect = ({project}) => {
 
           <footer className="">
             <div className="px-6 mt-5 mb-5 grid grid-cols-2 ">
-              {tags.map((tag, index) => (
+              {tagsList.map((tag, index) => (
                 <div key={index} className="my-1 mx-1">
-                  <span className='bg-gray-800 text-white text-sm font-medium px-2.5 py-1 rounded-full flex justify-center w-full'>
+                  <span className='bg-gray-800 text-white text-sm px-2.5 py-1 rounded-full flex justify-center w-full'>
                     {tag}
                   </span>
                 </div>
