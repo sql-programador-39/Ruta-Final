@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
+}
 
 .card-tranform {
   transition: transform 0.7s;
@@ -11,7 +15,13 @@
   transform: scale(1.025);
 }
 
-body {
-  box-sizing: border-box;
-  font-family: 'Open Sans', sans-serif;
+.media-query-modal{
+  @media (max-width: 768px) {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px auto 0 auto;
+    width: 50%;
+  }
 }

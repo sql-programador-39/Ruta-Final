@@ -30,15 +30,15 @@ const Projects = () => {
 
         </div>
 
-        <div className="my-10 w-3/4 flex items-center justify-center mx-auto ">
+        <div className="my-10 w-3/4 mx-auto md:flex items-center justify-center">
 
-          <div className="w-1/4"></div>
+          <div className="w-0 md:w-1/4"></div>
 
-          <div className="w-2/4">
+          <div className="w-full md:w-2/4">
             <SearchBar onSearch={handleSearch}  />
           </div>
 
-          <div className="w-1/4">
+          <div className="w-full md:w-1/4">
             <Modal />
           </div>
         </div>

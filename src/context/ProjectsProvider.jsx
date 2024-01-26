@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-/* import data from '../../public/data/projects.js' */
+import data from '../../public/data/projects.js'
 
 const ProjectsContext = createContext()
 
@@ -20,19 +20,20 @@ const ProjectsProvider = ({children}) => {
   const [files, setFiles] = useState([])
   const [tasks, setTasks] = useState([])
 
-  /* const getProjects = async () => {
+  const getProjects = async () => {
     try {
       setProjects(data);
     } catch (error) {
       console.error(error);
     }
-  }; */
+  };
 
   useEffect(() => {
-    const storedProjects = JSON.parse(localStorage.getItem('projects')) || [];
+    /* const storedProjects = JSON.parse(localStorage.getItem('projects')) || [];
     if (storedProjects.length > 0) {
       setProjects(storedProjects);
-    }
+    } */
+    getProjects();
   }, []);
 
   useEffect(() => {
