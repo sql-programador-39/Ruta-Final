@@ -26,7 +26,7 @@ const TasksModal = ({ setDataProject}) => {
 
     const  newAction = {
       id: (Date.now()).toString(),
-      action: "Se agrego una tarea",
+      action: `Se agrego una tarea ${newTask.id}`,
       responsable: "Camilo Ardila",
       date: new Date().toLocaleDateString()
     }

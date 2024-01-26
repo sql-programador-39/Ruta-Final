@@ -13,14 +13,12 @@ import ScoreTasks from "../components/ScoreTasks"
 
 const Project = () => {
 
-  const { setProjects, projects, project, setProject } = useProjects()
+  const { setProjects, projects } = useProjects()
 
   const [dataProject, setDataProject] = useState({});
   const [tasksCompleted, setTasksCompleted] = useState(0);
   const [tasksPending, setTasksPending] = useState(0);
   const [tasksDelayed, setTasksDelayed] = useState(0);
-  const [counterTasks, setCounterTasks] = useState(0)
-  const [counterFiles, setCounterFiles] = useState(0)
 
 
   const { id } = useParams()

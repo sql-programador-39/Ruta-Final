@@ -59,7 +59,7 @@ const TaskCard = ({ task, dataProject, setDataProject }) => {
 
       const  newAction = {
         id: (Date.now()).toString(),
-        action: "Se agrego un nuevo archivo al proyecto a completada",
+        action: `Se modifico el estado de la tarea ${task.id} a completada`,
         responsable: "Camilo Ardila",
         date: new Date().toLocaleDateString()
       }
@@ -104,10 +104,14 @@ const TaskCard = ({ task, dataProject, setDataProject }) => {
   return (
     <>
       <div className={`bg-gray-800 text-white p-3 rounded-lg font-bold flex `}> 
-
-
-          <div className={`text-center ${colorClass} pe-5 flex justify-center items-center w-11/12`}>
-            {task.task}
+          <div className={`text-center ${colorClass} pe-5 flex flex-col justify-center items-center w-11/12`}>
+            <p>
+              {task.id}
+            </p>
+            <p>
+              {task.task}
+            </p>
+            
           </div>
 
           <div className='grid justify-center items-center gap-1 ms-3 w-1/12'>
